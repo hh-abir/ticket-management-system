@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+{% load widget_tweaks %}
+{% block content %}
+<div class="mb-3">
+  <h3>Create a ticket</h3>
+<form method="POST">
+    {% csrf_token %}
+    
+        <label for="formGroupExampleInput" class="form-label">Issue Title</label>
+        
+        {% render_field form.title class="form-control" placeholder="Enter your issue" %}
+      </div>
+      <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Add Description</label>
+        {% render_field form.description class="form-control" placeholder="Write your issue in details">%}
+        <button type="submit" class="btn btn-primary mt-4">Submit Issue</button>
+      
+</form>
+</div>
+
+{% endblock %}

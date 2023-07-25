@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    {% if request.user.is_customer %}
+    <h2>Customer Dashboard</h2>
+    {% elif request.user.is_engineer %}
+    <h2>Engineer Dashboard</h2>
+    {% endif%}
+</div>
+
+{% endblock content %}

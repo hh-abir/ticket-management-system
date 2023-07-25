@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+
+{% block content %}
+<form method="POST" class="mx-auto mt-4" style="width: 40rem;">
+    {% csrf_token %}
+    <h4 class="card-title mb-3">Please register to login</h4>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        {% render_field form.email class="form-control" placeholder="Enter your email address" %}
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Username</label>
+        {% render_field form.username placeholder="Enter a username" type="text" class="form-control" %}
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        {% render_field form.password1 placeholder="Enter your password" type="password" class="form-control" %}
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+         {% render_field form.password2 placeholder="Enter your password again" type="password" class="form-control" %}
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock content %}

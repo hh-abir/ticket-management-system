@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+
+{% block content %}
+<div class="row">
+    <div class="col-9">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ticket.title}}</h5>
+                <p class="card-text">{{ticket.description}}</p>
+            </div>
+
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><b>Date Created:</b> {{ticket.date_created}}</li>
+                <li class="list-group-item"><b>Assigned To:</b> {{ticket.assigned_to}}</li>
+                {% if ticket.is_resolved %}
+                <li class="list-group-item"><b>Resolved yet?</b> <span class="badge bg-danger">Yes, resolved.</span>
+                </li>
+                {% else %}
+                <li class="list-group-item"><b>Resolved yet?</b> <span class="badge bg-dark">Not, Yet</span></li>
+                {% endif %}
+                <li class="list-group-item"><b>Created By: </b> {{ticket.created_by}}</li>
+                <li class="list-group-item"><b>Ticket Number: </b> {{ticket.ticket_number}}</li>
+                <li class="list-group-item"><b>Accepted Date: </b> {{ticket.accepted_date}}</li>
+                <li class="list-group-item"><b>Ticket Status: </b> {{ticket.ticket_status}}</li>
+            </ul>
+
+
+            <div class="card-body">
+                {% if request.user.is_engineer and not ticket.is_resolved %}
+                <a href="{% url 'close-ticket' ticket.pk %}" class="btn btn-success">Solved</a>
+                <a href="{% url 'delete-ticket' ticket.pk %}" class="btn btn-danger">Reject</a>
+                {% elif request.user.is_engineer and ticket.is_resolved %}
+                <a href="#" class="btn btn-danger">Delete</a>
+                {% elif request.user.is_customer and not ticket.is_resolved %}
+                <a href="{% url 'update-ticket' ticket.pk %}" class="btn btn-warning">Update</a>
+                <a href="#" class="btn btn-danger">Delete</a>
+                {% elif request.user.is_customer and ticket.is_resolved %}
+                <a href="{% url 'delete-ticket' ticket.pk %}" class="btn btn-danger">Delete</a>
+                {% else %}
+                <b>Please wait or contact IT department</b>
+                {% endif %}
+                <a href="{% url 'download_ticket' ticket.pk %}" class="btn btn-primary">Collect Ticket</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-3">
+        <h4>Others tickets created by {{ticket.created_by}}</h4>
+        {% for tkt in ticket_per_user %}
+        {% with tkt.some_value|continue_if_false as filtered_value %}
+        {% if tkt.title != ticket.title %}
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{tkt.title}}</h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary"><b>Ticket Status: </b>{{tkt.ticket_status}}</h6>
+                <p class="card-text">{{tkt.description}}</p>
+                <a href="{% url 'ticket-details' ticket.pk %}" class="card-link">View Details</a>
+            </div>
+        </div>
+        {% endif %}
+        {% endwith %}
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

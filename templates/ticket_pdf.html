@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ticket Management System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #555;
+            background-color: #f5f5f5;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            padding-top: 5px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #3498db;
+            font-size: 40px;
+            text-align: center;
+            margin-bottom: 2px;
+        }
+
+        p {
+            font-size: 5px;
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+
+        .alert {
+            text-align: center;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            padding-top: 50%;
+        }
+
+        .alert-info {
+            
+            background-color: #ffbf00;
+            color: black;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th{
+            font-size: 15px;
+            vertical-align: middle;
+            padding-top: 50%;
+            border: 1px solid #ddd;
+        }
+        td {
+            text-align: center;
+            font-size: larger;
+            padding-top: 50%;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .important {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        li {
+            font-size: 13px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Ticket Management System</h1>
+    </div>
+    <div class="alert alert-info">
+        TICKET INFORMATION
+    </div>
+
+    <table style="margin-bottom: 25px;">
+        <tr>
+            <th>Title</th>
+            <td>{{ticket.title}}</td>
+        </tr>
+        <tbody>
+            <tr>
+                <th>Description</th>
+                <td style="font-size: 12px;">{{ticket.description}}</td>
+            </tr>
+            <tr>
+                <th>Ticket Number: </th>
+                <td>{{ticket.ticket_number}}</td>
+            </tr>
+            <tr>
+                <th>Created By: </th>
+                <td>{{ticket.created_by}}</td>
+            </tr>
+            <tr>
+                <th>Date Created: </th>
+                <td>{{ticket.date_created}}</td>
+            </tr>
+            <tr>
+                <th>Assigned To: </th>
+                <td>{{ticket.assigned_to}}</td>
+            </tr>
+            <tr>
+                <th>Ticket Status: </th>
+                <td>{{ticket.ticket_status}}</td>
+            </tr>
+            <tr>
+                <th>Accepted Date: </th>
+                <td>{{ticket.accepted_date}}</td>
+            </tr>
+            <tr>
+                <th>Closed Date: </th>
+                <td>{{ticket.closed_date}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <p><span class="important">Important Information:</span></p>
+    <ul>
+        <li>This ticket is valid for one person only and must be presented at the entrance.</li>
+        <li>Please keep this ticket safe, as it cannot be replaced if lost, stolen, or damaged.</li>
+        <li>Giving your ticket to others is strictly prohibited and may result in refusal of entry.</li>
+        <li>User cannot modify this ticket by himself/herself.</li>
+    </ul>
+
+    <p><span class="important">Terms and Conditions:</span></p>
+    <ul>
+        <li>Entry to the IT/ Service Center is subject to compliance with the companies rules and regulations.</li>
+        <li>The developer team reserves the right to make changes to the program, lineup, or schedule without
+            prior notice.</li>
+        <li>This ticket cannot be used for other purposes.</li>
+    </ul>
+
+
+        <p><span class="important">Developer Information:</span></p>
+        <ul>
+            <li>Developer Name: Hasib Hossain Abir</li>
+            <li>Contact Email: hossainhasib39@gmail.com </li>
+            <li>Social Medial: <a href="https://www.facebook.com/hasibhossain.abir.7/">Facebook</a> </li>
+        </ul>
+    </div>
+</body>
+
+</html>
